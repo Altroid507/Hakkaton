@@ -1,5 +1,3 @@
-int test = 0;
-
 long long step(int num, int step) {
     int res;
     res = num;
@@ -27,7 +25,16 @@ long long itc_bin_num(long long number) {
     return number;
 }
 
+long long binary_led(long long number){
+  long long n = itc_bin_num(number);
+  for (int i = 2; i <= 11; i++){
+    if (n % 10 == 1) digitalWrite(i, HIGH);
+    n = n / 10;
+  }
+}
+
 void setup() {
+    Serial.begin(9600);
     pinMode(8, OUTPUT);
     pinMode(7, OUTPUT);
     pinMode(6, OUTPUT);
@@ -41,14 +48,17 @@ void setup() {
 
 }
 void loop() {
-    digitalWrite(10, HIGH);
-    digitalWrite(9, HIGH);
-    digitalWrite(8, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(6, HIGH);
-    digitalWrite(5, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(2, HIGH);
-    digitalWrite(1, HIGH);
+    int n = Serial.parseInt();
+    binary_led(n);
+    delay(3000);
+    digitalWrite(10, LOW);
+    digitalWrite(9, LOW);
+    digitalWrite(8, LOW);
+    digitalWrite(7, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(3, LOW);
+    digitalWrite(2, LOW);
+    digitalWrite(1, LOW);
 }
