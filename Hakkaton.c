@@ -39,7 +39,7 @@ void setup() {
 void loop() {
     int n = Serial.parseInt();
     binary_led(n);
-    delay(2000);
+    delay(1500);
     digitalWrite(10, LOW);
     digitalWrite(9, LOW);
     digitalWrite(8, LOW);
